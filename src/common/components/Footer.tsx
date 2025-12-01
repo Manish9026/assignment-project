@@ -1,0 +1,26 @@
+'use client';
+
+import { Box, Typography, Container } from '@mui/material';
+
+export default function Footer() {
+  return (
+    <Box
+      component="footer"
+      sx={{
+        py: 3,
+        px: 2,
+        mt: 'auto',
+        backgroundColor: (theme) =>
+          theme.palette.mode === 'light'
+            ? theme.palette.grey[200]
+            : theme.palette.background.paper,
+      }}
+    >
+      <Container maxWidth="lg">
+        <Typography variant="body2" color="text.secondary" align="center">
+          © {new Date().getFullYear()} Modern Dashboard. Built with Next.js, MUI, and Zustand.
+        </Typography>
+      </Container>
+    </Box>
+  );
+}
