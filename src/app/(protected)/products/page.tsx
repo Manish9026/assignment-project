@@ -50,7 +50,7 @@ const Products = () => {
 
   const handleCategoryChange = (category: string) => {
     setSearchQuery('');
-    if (category && category !== 'all' ) {
+    if (category && category !== 'all') {
       fetchProductsByCategory(category);
     }
     else {
@@ -59,57 +59,57 @@ const Products = () => {
   };
 
   return (
-   
-      <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-        {/* <Navbar /> */}
-        <Container maxWidth="xl" sx={{ py: 4 }}>
-          <Typography variant="h4" fontWeight={700} gutterBottom color='text.primary'>
-            Products
-          </Typography>
-          <Typography variant="body1" color="text.secondary" paragraph>
-            Browse our product catalog
-          </Typography>
 
-          <Grid container spacing={2} sx={{ mb: 3 }}>
-            <Grid xs={12} md={8}>
+    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+      {/* <Navbar /> */}
+      <Container maxWidth="xl" sx={{ py: 4 }}>
+        <Typography variant="h4" fontWeight={700} gutterBottom color='text.primary'>
+          Products
+        </Typography>
+        <Typography variant="body1" color="text.secondary" paragraph>
+          Browse our product catalog
+        </Typography>
 
-              <TextField
-                fullWidth
-                placeholder="Search products..."
-                value={searchQuery}
-                onChange={handleSearch}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchOutlined />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <FormControl fullWidth>
-                <InputLabel>Category</InputLabel>
-                <Select
-                  value={selectedCategory}
-                  label="Category"
-                  onChange={(e) => handleCategoryChange(e.target.value)}
-                  className='flex-1'
-                >
-                  <MenuItem value="all">All Categories</MenuItem>
-                  {categories?.map((category) => (
-                    <MenuItem key={category?.slug} value={category?.slug}>
-                      {category?.name?.charAt(0).toUpperCase() + category?.name?.slice(1)}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
-          </Grid>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-3">
+          <div className="md:col-span-2">
+            <TextField
+              fullWidth
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={handleSearch}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchOutlined />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </div>
 
-          <ProductGrid />
-        </Container>
-      </Box>
+          <div className="md:col-span-1">
+            <FormControl fullWidth>
+              <InputLabel>Category</InputLabel>
+              <Select
+                value={selectedCategory}
+                label="Category"
+                onChange={(e) => handleCategoryChange(e.target.value)}
+              >
+                <MenuItem value="all">All Categories</MenuItem>
+                {categories?.map((category:any) => (
+                  <MenuItem key={category?.slug} value={category?.slug}>
+                    {category?.name?.charAt(0).toUpperCase() + category?.name?.slice(1)}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+        </div>
+
+
+        <ProductGrid />
+      </Container>
+    </Box>
 
 
 

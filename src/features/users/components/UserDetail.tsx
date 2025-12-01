@@ -80,9 +80,15 @@ export const UserDetail = () => {
           <Divider sx={{ my: 3 }} />
 
           {/* Contact Information */}
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6} >
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+              gap: 3,
+            }}
+          >
+            <Box>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
                 <EmailOutlined color="primary" />
                 <Box>
                   <Typography variant="caption" color="text.secondary">
@@ -91,7 +97,8 @@ export const UserDetail = () => {
                   <Typography variant="body1">{selectedUser.email}</Typography>
                 </Box>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                 <PhoneOutlined color="primary" />
                 <Box>
                   <Typography variant="caption" color="text.secondary">
@@ -100,10 +107,10 @@ export const UserDetail = () => {
                   <Typography variant="body1">{selectedUser.phone}</Typography>
                 </Box>
               </Box>
-            </Grid>
+            </Box>
 
-            <Grid item xs={12} md={6}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+            <Box>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
                 <BusinessOutlined color="primary" />
                 <Box>
                   <Typography variant="caption" color="text.secondary">
@@ -115,7 +122,8 @@ export const UserDetail = () => {
                   </Typography>
                 </Box>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                 <SchoolOutlined color="primary" />
                 <Box>
                   <Typography variant="caption" color="text.secondary">
@@ -124,8 +132,9 @@ export const UserDetail = () => {
                   <Typography variant="body1">{selectedUser.university}</Typography>
                 </Box>
               </Box>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
+
 
           <Divider sx={{ my: 3 }} />
 
@@ -145,32 +154,44 @@ export const UserDetail = () => {
           <Divider sx={{ my: 3 }} />
 
           {/* Additional Details */}
-          <Grid container spacing={2}>
-            <Grid item xs={6} sm={4}>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: {
+                xs: "repeat(2, 1fr)",   // 2 columns on mobile
+                sm: "repeat(3, 1fr)",   // 3 columns on small screens+
+              },
+              gap: 2,
+            }}
+          >
+            <Box>
               <Typography variant="caption" color="text.secondary">
                 Blood Group
               </Typography>
               <Typography variant="body1" fontWeight={600}>
                 {selectedUser.bloodGroup}
               </Typography>
-            </Grid>
-            <Grid item xs={6} sm={4}>
+            </Box>
+
+            <Box>
               <Typography variant="caption" color="text.secondary">
                 Height
               </Typography>
               <Typography variant="body1" fontWeight={600}>
                 {selectedUser.height} cm
               </Typography>
-            </Grid>
-            <Grid item xs={6} sm={4}>
+            </Box>
+
+            <Box>
               <Typography variant="caption" color="text.secondary">
                 Weight
               </Typography>
               <Typography variant="body1" fontWeight={600}>
                 {selectedUser.weight} kg
               </Typography>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
+
         </CardContent>
       </Card>
     </motion.div>
