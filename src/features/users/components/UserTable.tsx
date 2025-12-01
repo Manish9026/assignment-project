@@ -41,6 +41,20 @@ export const UserTable = () => {
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+  const handleResize = () => {
+    if (window.innerWidth < 600) {
+      setView("card");
+    }
+  }
+
 
   const handleChangePage = (_: unknown, newPage: number) => {
     setPage(newPage);
@@ -319,3 +333,7 @@ export const UserTable = () => {
   //   </Paper>
   // );
 };
+function setPage(newPage: number) {
+  throw new Error('Function not implemented.');
+}
+

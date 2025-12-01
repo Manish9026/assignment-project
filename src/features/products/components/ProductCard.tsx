@@ -36,6 +36,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       <CardMedia
         component="img"
         height="200"
+        // className='h-[200px] sm-[250px]'
         image={product.thumbnail}
         alt={product.title}
         sx={{ objectFit: 'cover' }}
